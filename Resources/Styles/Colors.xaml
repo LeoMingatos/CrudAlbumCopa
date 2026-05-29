@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="Gray100">#E1E1E1</Color>
+    <Color x:Key="Gray200">#C8C8C8</Color>
+    <Color x:Key="Gray300">#ACACAC</Color>
+    <Color x:Key="Gray400">#919191</Color>
+    <Color x:Key="Gray500">#6E6E6E</Color>
+    <Color x:Key="Gray600">#404040</Color>
+    <Color x:Key="Gray900">#212121</Color>
+    <Color x:Key="Gray950">#141414</Color>
+
+    <Color x:Key="White">#FFFFFF</Color>
+    <Color x:Key="Black">#000000</Color>
+    <Color x:Key="Primary">#0A3D2E</Color>
+    <Color x:Key="Secondary">#1A5C3E</Color>
+    <Color x:Key="CopaPrimary">#0A3D2E</Color>
+    <Color x:Key="CopaSecondary">#1A5C3E</Color>
+    <Color x:Key="CopaAccent">#FFD700</Color>
+    <Color x:Key="CopaLight">#A8D8A8</Color>
+    <Color x:Key="CopaDark">#0D2B1E</Color>
+    <Color x:Key="CopaSuccess">#4CAF50</Color>
+    <Color x:Key="CopaHeart">#E91E63</Color>
+    <Color x:Key="CopaMuted">#4A7A5A</Color>
+    <Color x:Key="CopaText">#FFFFFF</Color>
+    <Color x:Key="CopaBorder">#2E7D52</Color>
+    <Color x:Key="PrimaryDark">#063124</Color>
+    <Color x:Key="PrimaryDarkText">#FFFFFF</Color>
+
+    <Color x:Key="SecondaryDarkText">#FFFFFF</Color>
+
+    <Color x:Key="OffBlack">#111111</Color>
+
+    <Color x:Key="Magenta">#FF00FF</Color>
+
+    <Color x:Key="MidnightBlue">#191970</Color>
+
+</ResourceDictionary>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlbumCopa2026.MainPage"
+             BackgroundColor="#0A3D2E">
+
+    <ScrollView>
+
+        <StackLayout Spacing="0">
+
+        <!-- TOPO -->
+        <StackLayout Spacing="0">
+
+            <!-- IMAGEM -->
+            <Image Source="banner.png"
+                   HeightRequest="240"
+                   Aspect="AspectFill"/>
+
+            <!-- ÁREA DOS TEXTOS -->
+            <StackLayout Padding="20"
+                         BackgroundColor="#0D2B1E"
+                         Spacing="4">
+
+                <Label Text="🏆 Álbum Copa 2026"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"/>
+
+                <Label Text="Gerencie sua coleção de figurinhas"
+                       FontSize="15"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"/>
+
+            </StackLayout>
+
+        </StackLayout>
+
+        <!-- CONTEÚDO -->
+        <StackLayout Padding="30,20"
+                     Spacing="18">
+
+            <!-- BOTÃO CADASTRAR -->
+            <Frame BackgroundColor="#1A5C3E"
+                   CornerRadius="18"
+                   Padding="0"
+                   BorderColor="#FFD700"
+                   HasShadow="True">
+
+                <StackLayout Orientation="Horizontal"
+                             Padding="20,18"
+                             Spacing="14">
+
+                    <!-- ÍCONE -->
+                    <Label Text="⚽"
+                           FontSize="32"
+                           VerticalOptions="Center"/>
+
+                    <!-- TEXTOS -->
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Center"
+                                 Spacing="2">
+
+                        <Label Text="Cadastrar Figurinha"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+
+                        <Label Text="Adicione novas figurinhas ao álbum"
+                               FontSize="12"
+                               TextColor="#A8D8A8"/>
+
+                    </StackLayout>
+
+                    <!-- SETA -->
+                    <Label Text="›"
+                           FontSize="28"
+                           TextColor="#FFD700"
+                           VerticalOptions="Center"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="btnCadastrar_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+            </Frame>
+
+            <!-- BOTÃO LISTA -->
+            <Frame BackgroundColor="#1A5C3E"
+                   CornerRadius="18"
+                   Padding="0"
+                   BorderColor="#FFD700"
+                   HasShadow="True">
+
+                <StackLayout Orientation="Horizontal"
+                             Padding="20,18"
+                             Spacing="14">
+
+                    <!-- ÍCONE -->
+                    <Label Text="📋"
+                           FontSize="32"
+                           VerticalOptions="Center"/>
+
+                    <!-- TEXTOS -->
+                    <StackLayout HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="Center"
+                                 Spacing="2">
+
+                        <Label Text="Lista de Figurinhas"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+
+                        <Label Text="Veja sua coleção e lista de desejos"
+                               FontSize="12"
+                               TextColor="#A8D8A8"/>
+
+                    </StackLayout>
+
+                    <!-- SETA -->
+                    <Label Text="›"
+                           FontSize="28"
+                           TextColor="#FFD700"
+                           VerticalOptions="Center"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="btnLista_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+            </Frame>
+
+            <!-- ESTATÍSTICAS -->
+            <Frame BackgroundColor="#0D2B1E"
+                   CornerRadius="18"
+                   Padding="20,16"
+                   BorderColor="#2E7D52"
+                   HasShadow="False">
+
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Spacing="40">
+
+                    <!-- TOTAL -->
+                    <StackLayout HorizontalOptions="Center">
+
+                        <Label x:Name="lblTotalFigurinhas"
+                               Text="0"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="#FFD700"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="Total"
+                               FontSize="11"
+                               TextColor="#A8D8A8"
+                               HorizontalOptions="Center"/>
+
+                    </StackLayout>
+
+                    <!-- OBTIDAS -->
+                    <StackLayout HorizontalOptions="Center">
+
+                        <Label x:Name="lblObtidas"
+                               Text="0"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="#4CAF50"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="Obtidas"
+                               FontSize="11"
+                               TextColor="#A8D8A8"
+                               HorizontalOptions="Center"/>
+
+                    </StackLayout>
+
+                    <!-- DESEJADAS -->
+                    <StackLayout HorizontalOptions="Center">
+
+                        <Label x:Name="lblDesejadas"
+                               Text="0"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="#E91E63"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="Desejadas"
+                               FontSize="11"
+                               TextColor="#A8D8A8"
+                               HorizontalOptions="Center"/>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+            </Frame>
+
+        </StackLayout>
+
+        <!-- RODAPÉ -->
+        <StackLayout Padding="20,10,20,30"
+             HorizontalOptions="Center"
+             Spacing="4">
+
+            <BoxView HeightRequest="1"
+             WidthRequest="250"
+             BackgroundColor="#2E7D52"/>
+
+            <!-- VERSÃO -->
+            <Label Text="Versão v1.0.0"
+           FontSize="12"
+           TextColor="#6B9E7A"
+           HorizontalOptions="Center"/>
+
+            <!-- PARTICIPANTES -->
+            <Label Text="Leonardo Mingatos • Eduardo Dias"
+           FontSize="11"
+           TextColor="#4A7A5A"
+           HorizontalOptions="Center"
+           HorizontalTextAlignment="Center"/>
+
+        </StackLayout>
+
+    </StackLayout>
+        
+  </ScrollView>
+
+</ContentPage>
