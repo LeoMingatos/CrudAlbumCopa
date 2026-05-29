@@ -14,11 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AlbumCopa2026")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+543be8a938b46c6b136885efd3a40bb2ff583517")]
 [assembly: System.Reflection.AssemblyProductAttribute("AlbumCopa2026")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AlbumCopa2026")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
-[assembly: System.Runtime.Versioning.TargetPlatformAttribute("MacCatalyst26.0")]
+[assembly: System.Runtime.Versioning.TargetPlatformAttribute("MacCatalyst26.2")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("MacCatalyst15.0")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.

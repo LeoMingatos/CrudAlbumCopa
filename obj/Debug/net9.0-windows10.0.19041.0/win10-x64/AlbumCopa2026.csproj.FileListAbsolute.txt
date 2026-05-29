@@ -513,3 +513,7 @@ C:\Users\minga\Downloads\AlbumCopa2026\AlbumCopa2026\obj\Debug\net9.0-windows10.
 C:\Users\minga\Downloads\AlbumCopa2026\AlbumCopa2026\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 C:\Users\minga\Downloads\AlbumCopa2026\AlbumCopa2026\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\banner.scale-100.png
 C:\Users\minga\Downloads\AlbumCopa2026\AlbumCopa2026\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\resizetizer\r\banner.scale-100.png
+C:\Users\minga\OneDrive\Documentos\CrudAlbumCopa\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\AlbumCopa2026.csproj.AssemblyReference.cache
+C:\Users\minga\OneDrive\Documentos\CrudAlbumCopa\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\AlbumCopa2026.dll
+C:\Users\minga\OneDrive\Documentos\CrudAlbumCopa\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\refint\AlbumCopa2026.dll
+C:\Users\minga\OneDrive\Documentos\CrudAlbumCopa\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\AlbumCopa2026.pdb
