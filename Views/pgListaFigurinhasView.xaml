@@ -3,271 +3,393 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AlbumCopa2026.Views.pgListaFigurinhasView"
              Title="Minhas Figurinhas"
-             BackgroundColor="#0A3D2E">
+             BackgroundColor="#061B14"
+             NavigationPage.HasNavigationBar="False">
 
     <Grid RowDefinitions="Auto,Auto,*">
 
-        <!-- CABEÇALHO -->
-        <StackLayout Grid.Row="0" Padding="16,16,16,8">
+        <Grid Grid.Row="0" HeightRequest="145">
+            <Image Source="banner.png" Aspect="AspectFill"/>
+            <BoxView BackgroundColor="#88000000"/>
 
-            <Label Text="📋 Minhas Figurinhas"
-                   FontSize="22"
-                   FontAttributes="Bold"
-                   TextColor="#FFD700"
-                   HorizontalOptions="Center"/>
+            <VerticalStackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Spacing="4">
 
-            <Label Text="Copa do Mundo 2026"
+                <Label Text="📖 ÁLBUM DE FIGURINHAS"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"
+                       HorizontalTextAlignment="Center"/>
+
+                <Label Text="Rumo ao Hexa • Copa do Mundo 2026"
+                       FontSize="13"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"/>
+
+            </VerticalStackLayout>
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1"
+                             Padding="16,14,16,8"
+                             Spacing="12">
+
+            <Border BackgroundColor="#10271F"
+                    Stroke="#2E7D52"
+                    StrokeShape="RoundRectangle 18"
+                    Padding="14,4">
+
+                <Grid ColumnDefinitions="Auto,*"
+                      ColumnSpacing="10">
+
+                    <Label Text="🔍"
+                           FontSize="18"
+                           VerticalOptions="Center"/>
+
+                    <Entry x:Name="txtFiltroNome"
+                           Grid.Column="1"
+                           Placeholder="Buscar figurinha..."
+                           PlaceholderColor="#5F8F72"
+                           TextColor="White"
+                           BackgroundColor="Transparent"
+                           FontSize="15"
+                           TextChanged="OnFiltroAlterado"/>
+
+                </Grid>
+
+            </Border>
+
+            <Grid ColumnDefinitions="*,*,*"
+                  ColumnSpacing="10">
+
+                <Frame x:Name="frmFiltroTodos"
+                       Grid.Column="0"
+                       BackgroundColor="#2E7D52"
+                       BorderColor="#FFD700"
+                       CornerRadius="22"
+                       Padding="0"
+                       HeightRequest="44"
+                       HasShadow="False">
+
+                    <Grid>
+                        <Label Text="Todos"
+                               FontSize="12"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapFiltroTodos_Tapped"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+
+                </Frame>
+
+                <Frame x:Name="frmFiltroObtidas"
+                       Grid.Column="1"
+                       BackgroundColor="#10271F"
+                       BorderColor="#2E7D52"
+                       CornerRadius="22"
+                       Padding="0"
+                       HeightRequest="44"
+                       HasShadow="False">
+
+                    <Grid>
+                        <Label Text="✅ Obtidas"
+                               FontSize="12"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapFiltroObtidas_Tapped"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+
+                </Frame>
+
+                <Frame x:Name="frmFiltroDesejadas"
+                       Grid.Column="2"
+                       BackgroundColor="#10271F"
+                       BorderColor="#2E7D52"
+                       CornerRadius="22"
+                       Padding="0"
+                       HeightRequest="44"
+                       HasShadow="False">
+
+                    <Grid>
+                        <Label Text="❤️ Desejadas"
+                               FontSize="12"
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="tapFiltroDesejadas_Tapped"/>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+
+                </Frame>
+
+            </Grid>
+
+            <Label x:Name="lblContador"
+                   Text="0 figurinha(s) encontrada(s)"
                    FontSize="12"
                    TextColor="#A8D8A8"
                    HorizontalOptions="Center"/>
 
-            <BoxView HeightRequest="1"
-                     Color="#2E7D52"
-                     Margin="0,8,0,0"/>
+            <Button Text="Limpar filtros"
+                    FontSize="12"
+                    BackgroundColor="Transparent"
+                    TextColor="#FFD700"
+                    BorderColor="#2E7D52"
+                    BorderWidth="1"
+                    CornerRadius="16"
+                    HeightRequest="38"
+                    Clicked="btnLimparFiltros_Clicked"/>
 
-        </StackLayout>
+        </VerticalStackLayout>
 
-        <!-- FILTROS -->
-        <Frame Grid.Row="1"
-               BackgroundColor="#0D2B1E"
-               CornerRadius="16"
-               Padding="14"
-               BorderColor="#2E7D52"
-               Margin="12,0,12,8">
+        <Grid Grid.Row="2">
 
-            <StackLayout Spacing="10">
+            <Label x:Name="lblListaVazia"
+                   Text="📭 Nenhuma figurinha encontrada&#10;Cadastre sua primeira figurinha ou limpe os filtros."
+                   FontSize="15"
+                   TextColor="#A8D8A8"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   IsVisible="False"/>
 
-                <!-- Busca -->
-                <Border BackgroundColor="#1A5C3E"
-                        StrokeShape="RoundRectangle 10"
-                        Stroke="#2E7D52"
-                        Padding="10,2">
+            <ListView x:Name="lsvFigurinhas"
+                      BackgroundColor="Transparent"
+                      SeparatorVisibility="None"
+                      HasUnevenRows="True"
+                      Margin="10,0,10,10">
 
-                    <Grid ColumnDefinitions="Auto,*">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
 
-                        <Label Grid.Column="0"
-                               Text="🔍"
-                               FontSize="16"
-                               VerticalOptions="Center"
-                               Margin="0,0,6,0"/>
+                            <Grid ColumnDefinitions="150,150"
+                                  ColumnSpacing="10"
+                                  HorizontalOptions="Center"
+                                  Padding="0,6">
 
-                        <Entry x:Name="txtFiltroNome"
-                               Grid.Column="1"
-                               Placeholder="Buscar por nome do jogador..."
-                               PlaceholderColor="#4A7A5A"
-                               TextColor="#FFFFFF"
-                               BackgroundColor="Transparent"
-                               FontSize="14"
-                               TextChanged="OnFiltroAlterado"/>
-
-                    </Grid>
-
-                </Border>
-
-                <!-- FILTROS -->
-                <Grid ColumnDefinitions="*,*,*"
-                      ColumnSpacing="8">
-
-                    <!-- TODOS -->
-                    <Frame x:Name="frmFiltroTodos"
-                           Grid.Column="0"
-                           BackgroundColor="#2E7D52"
-                           CornerRadius="20"
-                           Padding="8,6"
-                           BorderColor="#FFD700">
-
-                        <Label Text="Todos"
-                               FontSize="12"
-                               FontAttributes="Bold"
-                               TextColor="#FFFFFF"
-                               HorizontalOptions="Center"/>
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="tapFiltroTodos_Tapped"/>
-                        </Frame.GestureRecognizers>
-
-                    </Frame>
-
-                    <!-- OBTIDAS -->
-                    <Frame x:Name="frmFiltroObtidas"
-                           Grid.Column="1"
-                           BackgroundColor="#1A5C3E"
-                           CornerRadius="20"
-                           Padding="8,6"
-                           BorderColor="#2E7D52">
-
-                        <Label Text="✅ Obtidas"
-                               FontSize="12"
-                               FontAttributes="Bold"
-                               TextColor="#FFFFFF"
-                               HorizontalOptions="Center"/>
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="tapFiltroObtidas_Tapped"/>
-                        </Frame.GestureRecognizers>
-
-                    </Frame>
-
-                    <!-- DESEJADAS -->
-                    <Frame x:Name="frmFiltroDesejadas"
-                           Grid.Column="2"
-                           BackgroundColor="#1A5C3E"
-                           CornerRadius="20"
-                           Padding="8,6"
-                           BorderColor="#2E7D52">
-
-                        <Label Text="❤️ Desejos"
-                               FontSize="12"
-                               FontAttributes="Bold"
-                               TextColor="#FFFFFF"
-                               HorizontalOptions="Center"/>
-
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="tapFiltroDesejadas_Tapped"/>
-                        </Frame.GestureRecognizers>
-
-                    </Frame>
-
-                </Grid>
-
-                <!-- CONTADOR -->
-                <Label x:Name="lblContador"
-                       Text="0 figurinhas encontradas"
-                       FontSize="11"
-                       TextColor="#6B9E7A"
-                       HorizontalOptions="Center"/>
-
-            </StackLayout>
-
-        </Frame>
-
-        <!-- LISTA -->
-        <ListView x:Name="lsvFigurinhas"
-                  Grid.Row="2"
-                  BackgroundColor="Transparent"
-                  SeparatorVisibility="None"
-                  Margin="8,0,8,0">
-
-            <ListView.ItemTemplate>
-
-                <DataTemplate>
-
-                    <ViewCell>
-
-                        <Frame BackgroundColor="#0D2B1E"
-                               CornerRadius="14"
-                               Padding="12"
-                               Margin="4,4,4,4"
-                               BorderColor="#2E7D52"
-                               HasShadow="True">
-
-                            <Grid ColumnDefinitions="Auto,*,Auto"
-                                  ColumnSpacing="10">
-
-                                <!-- IMAGEM -->
                                 <Frame Grid.Column="0"
-                                       BackgroundColor="#1A5C3E"
-                                       CornerRadius="10"
+                                       BackgroundColor="#0D2B1E"
+                                       BorderColor="#FFD700"
+                                       CornerRadius="18"
                                        Padding="0"
-                                       WidthRequest="64"
-                                       HeightRequest="64"
-                                       BorderColor="#2E7D52">
+                                       HasShadow="False">
 
-                                    <Image Source="{Binding DirImagem}"
-                                           Aspect="AspectFill"
-                                           WidthRequest="64"
-                                           HeightRequest="64"/>
+                                    <Grid RowDefinitions="Auto,Auto,Auto">
+
+                                        <BoxView HeightRequest="4"
+                                                 BackgroundColor="#FFD700"/>
+
+                                        <Frame Grid.Row="1"
+                                               Margin="10,10,10,4"
+                                               BackgroundColor="#10271F"
+                                               BorderColor="#2E7D52"
+                                               CornerRadius="14"
+                                               Padding="0"
+                                               HeightRequest="115"
+                                               WidthRequest="90"
+                                               HorizontalOptions="Center"
+                                               HasShadow="False">
+
+                                            <Image Source="{Binding Item1.DirImagem}"
+                                                   Aspect="AspectFill"/>
+
+                                        </Frame>
+
+                                        <VerticalStackLayout Grid.Row="2"
+                                                             Padding="10,4,10,10"
+                                                             Spacing="5">
+
+                                            <Label Text="{Binding Item1.NomeJogador}"
+                                                   FontSize="13"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White"
+                                                   HorizontalTextAlignment="Center"
+                                                   LineBreakMode="TailTruncation"/>
+
+                                            <Label Text="{Binding Item1.Selecao}"
+                                                   FontSize="10"
+                                                   TextColor="#C8E6C9"
+                                                   HorizontalTextAlignment="Center"
+                                                   LineBreakMode="TailTruncation"/>
+
+                                            <Frame BackgroundColor="#1A3A2C"
+                                                   BorderColor="#FFD700"
+                                                   CornerRadius="12"
+                                                   Padding="7,3"
+                                                   HasShadow="False"
+                                                   HorizontalOptions="Center">
+
+                                                <Label Text="{Binding Item1.TipoFigurinha}"
+                                                       FontSize="10"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#FFD700"/>
+
+                                            </Frame>
+
+                                            <Grid ColumnDefinitions="*,*,*"
+                                                  ColumnSpacing="4"
+                                                  Margin="0,4,0,0">
+
+                                                <Label Text="{Binding Item1.ObtidoIcon}"
+                                                       FontSize="18"
+                                                       HorizontalTextAlignment="Center">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="tapToggleObtido_Tapped"
+                                                                              CommandParameter="{Binding Item1}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+
+                                                <Label Grid.Column="1"
+                                                       Text="{Binding Item1.DesejadoIcon}"
+                                                       FontSize="18"
+                                                       HorizontalTextAlignment="Center">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="tapToggleDesejado_Tapped"
+                                                                              CommandParameter="{Binding Item1}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+
+                                                <Label Grid.Column="2"
+                                                       Text="🗑️"
+                                                       FontSize="18"
+                                                       HorizontalTextAlignment="Center">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="tapDeletar_Tapped"
+                                                                              CommandParameter="{Binding Item1}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+
+                                            </Grid>
+
+                                        </VerticalStackLayout>
+
+                                    </Grid>
 
                                 </Frame>
 
-                                <!-- DADOS -->
-                                <StackLayout Grid.Column="1"
-                                             VerticalOptions="Center"
-                                             Spacing="3">
+                                <Frame Grid.Column="1"
+                                       IsVisible="{Binding HasItem2}"
+                                       BackgroundColor="#0D2B1E"
+                                       BorderColor="#FFD700"
+                                       CornerRadius="18"
+                                       Padding="0"
+                                       HasShadow="False">
 
-                                    <Label Text="{Binding NomeJogador}"
-                                           FontSize="16"
-                                           FontAttributes="Bold"
-                                           TextColor="#FFFFFF"
-                                           LineBreakMode="TailTruncation"/>
+                                    <Grid RowDefinitions="Auto,Auto,Auto">
 
-                                    <StackLayout Orientation="Horizontal"
-                                                 Spacing="6">
+                                        <BoxView HeightRequest="4"
+                                                 BackgroundColor="#FFD700"/>
 
-                                        <Label Text="{Binding Selecao}"
-                                               FontSize="12"
-                                               TextColor="#A8D8A8"/>
+                                        <Frame Grid.Row="1"
+                                               Margin="10,10,10,4"
+                                               BackgroundColor="#10271F"
+                                               BorderColor="#2E7D52"
+                                               CornerRadius="14"
+                                               Padding="0"
+                                               HeightRequest="115"
+                                               WidthRequest="90"
+                                               HorizontalOptions="Center"
+                                               HasShadow="False">
 
-                                        <Label Text="•"
-                                               FontSize="12"
-                                               TextColor="#4A7A5A"/>
+                                            <Image Source="{Binding Item2.DirImagem}"
+                                                   Aspect="AspectFill"/>
 
-                                        <Label Text="{Binding TipoFigurinha}"
-                                               FontSize="12"
-                                               TextColor="#FFD700"/>
+                                        </Frame>
 
-                                    </StackLayout>
+                                        <VerticalStackLayout Grid.Row="2"
+                                                             Padding="10,4,10,10"
+                                                             Spacing="5">
 
-                                </StackLayout>
+                                            <Label Text="{Binding Item2.NomeJogador}"
+                                                   FontSize="13"
+                                                   FontAttributes="Bold"
+                                                   TextColor="White"
+                                                   HorizontalTextAlignment="Center"
+                                                   LineBreakMode="TailTruncation"/>
 
-                                <!-- AÇÕES -->
-                                <StackLayout Grid.Column="2"
-                                             VerticalOptions="Center"
-                                             Spacing="8">
+                                            <Label Text="{Binding Item2.Selecao}"
+                                                   FontSize="10"
+                                                   TextColor="#C8E6C9"
+                                                   HorizontalTextAlignment="Center"
+                                                   LineBreakMode="TailTruncation"/>
 
-                                    <!-- OBTIDO -->
-                                    <Label x:Name="lblCheck"
-                                           Text="{Binding ObtidoIcon}"
-                                           FontSize="22"
-                                           HorizontalOptions="Center">
+                                            <Frame BackgroundColor="#1A3A2C"
+                                                   BorderColor="#FFD700"
+                                                   CornerRadius="12"
+                                                   Padding="7,3"
+                                                   HasShadow="False"
+                                                   HorizontalOptions="Center">
 
-                                        <Label.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Tapped="tapToggleObtido_Tapped"
-                                                CommandParameter="{Binding .}"/>
-                                        </Label.GestureRecognizers>
+                                                <Label Text="{Binding Item2.TipoFigurinha}"
+                                                       FontSize="10"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#FFD700"/>
 
-                                    </Label>
+                                            </Frame>
 
-                                    <!-- DESEJADO -->
-                                    <Label Text="{Binding DesejadoIcon}"
-                                           FontSize="22"
-                                           HorizontalOptions="Center">
+                                            <Grid ColumnDefinitions="*,*,*"
+                                                  ColumnSpacing="4"
+                                                  Margin="0,4,0,0">
 
-                                        <Label.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Tapped="tapToggleDesejado_Tapped"
-                                                CommandParameter="{Binding .}"/>
-                                        </Label.GestureRecognizers>
+                                                <Label Text="{Binding Item2.ObtidoIcon}"
+                                                       FontSize="18"
+                                                       HorizontalTextAlignment="Center">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="tapToggleObtido_Tapped"
+                                                                              CommandParameter="{Binding Item2}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
 
-                                    </Label>
+                                                <Label Grid.Column="1"
+                                                       Text="{Binding Item2.DesejadoIcon}"
+                                                       FontSize="18"
+                                                       HorizontalTextAlignment="Center">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="tapToggleDesejado_Tapped"
+                                                                              CommandParameter="{Binding Item2}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
 
-                                    <!-- DELETAR -->
-                                    <Label Text="🗑️"
-                                           FontSize="20"
-                                           HorizontalOptions="Center">
+                                                <Label Grid.Column="2"
+                                                       Text="🗑️"
+                                                       FontSize="18"
+                                                       HorizontalTextAlignment="Center">
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="tapDeletar_Tapped"
+                                                                              CommandParameter="{Binding Item2}"/>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
 
-                                        <Label.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Tapped="tapDeletar_Tapped"
-                                                CommandParameter="{Binding .}"/>
-                                        </Label.GestureRecognizers>
+                                            </Grid>
 
-                                    </Label>
+                                        </VerticalStackLayout>
 
-                                </StackLayout>
+                                    </Grid>
+
+                                </Frame>
 
                             </Grid>
 
-                        </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
 
-                    </ViewCell>
+            </ListView>
 
-                </DataTemplate>
-
-            </ListView.ItemTemplate>
-
-        </ListView>
+        </Grid>
 
     </Grid>
 

@@ -7,7 +7,6 @@ namespace AlbumCopa2026.Views
     {
         FigurinhaController _controller;
 
-        // Controle de filtro de status ativo: null = todos, true = obtidas, false = desejadas
         bool? _filtroObtido = null;
         bool? _filtroDesejado = null;
 
@@ -20,15 +19,41 @@ namespace AlbumCopa2026.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            AtualizarEstiloFiltros("todos");
             AtualizarLista();
         }
 
         void AtualizarLista()
         {
             string nome = txtFiltroNome?.Text ?? "";
+
             var lista = _controller.GetFiltrado(nome, _filtroObtido, _filtroDesejado);
-            lsvFigurinhas.ItemsSource = lista;
+            var linhas = MontarLinhasAlbum(lista);
+
+            lsvFigurinhas.ItemsSource = linhas;
+
             lblContador.Text = $"{lista.Count} figurinha(s) encontrada(s)";
+
+            bool temResultado = lista.Count > 0;
+
+            lsvFigurinhas.IsVisible = temResultado;
+            lblListaVazia.IsVisible = !temResultado;
+        }
+
+        List<LinhaAlbum> MontarLinhasAlbum(List<Figurinha> lista)
+        {
+            List<LinhaAlbum> linhas = new List<LinhaAlbum>();
+
+            for (int i = 0; i < lista.Count; i += 2)
+            {
+                linhas.Add(new LinhaAlbum
+                {
+                    Item1 = lista[i],
+                    Item2 = i + 1 < lista.Count ? lista[i + 1] : null
+                });
+            }
+
+            return linhas;
         }
 
         private void OnFiltroAlterado(object sender, TextChangedEventArgs e)
@@ -36,13 +61,12 @@ namespace AlbumCopa2026.Views
             AtualizarLista();
         }
 
-        // --- Filtros de status ---
-
         private void tapFiltroTodos_Tapped(object sender, TappedEventArgs e)
         {
             _filtroObtido = null;
             _filtroDesejado = null;
-            AtualizarEstiloFiltros(ativo: "todos");
+
+            AtualizarEstiloFiltros("todos");
             AtualizarLista();
         }
 
@@ -50,7 +74,8 @@ namespace AlbumCopa2026.Views
         {
             _filtroObtido = true;
             _filtroDesejado = null;
-            AtualizarEstiloFiltros(ativo: "obtidas");
+
+            AtualizarEstiloFiltros("obtidas");
             AtualizarLista();
         }
 
@@ -58,16 +83,28 @@ namespace AlbumCopa2026.Views
         {
             _filtroObtido = null;
             _filtroDesejado = true;
-            AtualizarEstiloFiltros(ativo: "desejadas");
+
+            AtualizarEstiloFiltros("desejadas");
+            AtualizarLista();
+        }
+
+        private void btnLimparFiltros_Clicked(object sender, EventArgs e)
+        {
+            txtFiltroNome.Text = "";
+            _filtroObtido = null;
+            _filtroDesejado = null;
+
+            AtualizarEstiloFiltros("todos");
             AtualizarLista();
         }
 
         void AtualizarEstiloFiltros(string ativo)
         {
-            var corAtivo = Color.FromArgb("#2E7D52");
-            var corInativo = Color.FromArgb("#1A5C3E");
-            var bordaAtiva = Color.FromArgb("#FFD700");
-            var bordaInativa = Color.FromArgb("#2E7D52");
+            Color corAtivo = Color.FromArgb("#2E7D52");
+            Color corInativo = Color.FromArgb("#10271F");
+
+            Color bordaAtiva = Color.FromArgb("#FFD700");
+            Color bordaInativa = Color.FromArgb("#2E7D52");
 
             frmFiltroTodos.BackgroundColor = ativo == "todos" ? corAtivo : corInativo;
             frmFiltroTodos.BorderColor = ativo == "todos" ? bordaAtiva : bordaInativa;
@@ -79,9 +116,7 @@ namespace AlbumCopa2026.Views
             frmFiltroDesejadas.BorderColor = ativo == "desejadas" ? bordaAtiva : bordaInativa;
         }
 
-        // --- Ações da lista ---
-
-        private async void tapToggleObtido_Tapped(object sender, TappedEventArgs e)
+        private void tapToggleObtido_Tapped(object sender, TappedEventArgs e)
         {
             if (e.Parameter is Figurinha fig)
             {
@@ -90,7 +125,7 @@ namespace AlbumCopa2026.Views
             }
         }
 
-        private async void tapToggleDesejado_Tapped(object sender, TappedEventArgs e)
+        private void tapToggleDesejado_Tapped(object sender, TappedEventArgs e)
         {
             if (e.Parameter is Figurinha fig)
             {
@@ -115,6 +150,17 @@ namespace AlbumCopa2026.Views
                     AtualizarLista();
                 }
             }
+        }
+    }
+
+    public class LinhaAlbum
+    {
+        public Figurinha Item1 { get; set; }
+        public Figurinha Item2 { get; set; }
+
+        public bool HasItem2
+        {
+            get { return Item2 != null; }
         }
     }
 }

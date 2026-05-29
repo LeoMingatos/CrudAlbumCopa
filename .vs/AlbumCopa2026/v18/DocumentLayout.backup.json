@@ -1,12 +1,88 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\minga\\OneDrive\\Documentos\\CrudAlbumCopa\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|AlbumCopa2026.csproj|c:\\users\\minga\\onedrive\\documentos\\crudalbumcopa\\views\\pgcadfigurinhaview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|AlbumCopa2026.csproj|solutionrelative:views\\pgcadfigurinhaview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|AlbumCopa2026.csproj|c:\\users\\minga\\onedrive\\documentos\\crudalbumcopa\\views\\pglistafigurinhasview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|AlbumCopa2026.csproj|solutionrelative:views\\pglistafigurinhasview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|AlbumCopa2026.csproj|c:\\users\\minga\\onedrive\\documentos\\crudalbumcopa\\views\\pglistafigurinhasview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|AlbumCopa2026.csproj|solutionrelative:views\\pglistafigurinhasview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|AlbumCopa2026.csproj|c:\\users\\minga\\onedrive\\documentos\\crudalbumcopa\\views\\pgcadfigurinhaview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|AlbumCopa2026.csproj|solutionrelative:views\\pgcadfigurinhaview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "pgCadFigurinhaView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\minga\\OneDrive\\Documentos\\CrudAlbumCopa\\Views\\pgCadFigurinhaView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\pgCadFigurinhaView.xaml.cs",
+              "ToolTip": "C:\\Users\\minga\\OneDrive\\Documentos\\CrudAlbumCopa\\Views\\pgCadFigurinhaView.xaml.cs",
+              "RelativeToolTip": "Views\\pgCadFigurinhaView.xaml.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAuwNgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T15:39:46.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "pgListaFigurinhasView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\minga\\OneDrive\\Documentos\\CrudAlbumCopa\\Views\\pgListaFigurinhasView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\pgListaFigurinhasView.xaml.cs",
+              "ToolTip": "C:\\Users\\minga\\OneDrive\\Documentos\\CrudAlbumCopa\\Views\\pgListaFigurinhasView.xaml.cs",
+              "RelativeToolTip": "Views\\pgListaFigurinhasView.xaml.cs",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAYwJ0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-29T15:13:40.399Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "pgListaFigurinhasView.xaml",
+              "DocumentMoniker": "C:\\Users\\minga\\OneDrive\\Documentos\\CrudAlbumCopa\\Views\\pgListaFigurinhasView.xaml",
+              "RelativeDocumentMoniker": "Views\\pgListaFigurinhasView.xaml",
+              "ToolTip": "C:\\Users\\minga\\OneDrive\\Documentos\\CrudAlbumCopa\\Views\\pgListaFigurinhasView.xaml",
+              "RelativeToolTip": "Views\\pgListaFigurinhasView.xaml",
+              "ViewState": "AgIAAHYBAAAAAAAAAAAuwIsBAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-29T15:13:23.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "pgCadFigurinhaView.xaml",
+              "DocumentMoniker": "C:\\Users\\minga\\OneDrive\\Documentos\\CrudAlbumCopa\\Views\\pgCadFigurinhaView.xaml",
+              "RelativeDocumentMoniker": "Views\\pgCadFigurinhaView.xaml",
+              "ToolTip": "C:\\Users\\minga\\OneDrive\\Documentos\\CrudAlbumCopa\\Views\\pgCadFigurinhaView.xaml*",
+              "RelativeToolTip": "Views\\pgCadFigurinhaView.xaml*",
+              "ViewState": "AgIAAHUBAAAAAAAAAAAuwIoBAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-05-29T15:13:04.13Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

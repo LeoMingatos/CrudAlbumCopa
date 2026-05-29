@@ -29,7 +29,6 @@
                 </VerticalStackLayout>
             </Grid>
 
-            <!-- FOTO -->
             <VerticalStackLayout Spacing="12">
 
                 <Label Text="FOTO DA FIGURINHA *"
@@ -94,7 +93,6 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
 
-            <!-- NOME -->
             <VerticalStackLayout Spacing="8">
                 <Label Text="NOME DO JOGADOR *"
                        FontSize="14"
@@ -111,11 +109,11 @@
                            PlaceholderColor="#5F8F72"
                            TextColor="White"
                            BackgroundColor="Transparent"
-                           FontSize="16"/>
+                           FontSize="16"
+                           TextChanged="txtNomeJogador_TextChanged"/>
                 </Border>
             </VerticalStackLayout>
 
-            <!-- SELEÇÃO -->
             <VerticalStackLayout Spacing="8">
                 <Label Text="SELEÇÃO *"
                        FontSize="14"
@@ -131,7 +129,8 @@
                             Title="Escolha uma seleção"
                             TitleColor="#5F8F72"
                             TextColor="White"
-                            FontSize="16">
+                            FontSize="16"
+                            SelectedIndexChanged="pickerSelecao_SelectedIndexChanged">
 
                         <Picker.Items>
                             <x:String>🇿🇦 África do Sul</x:String>
@@ -188,7 +187,6 @@
                 </Border>
             </VerticalStackLayout>
 
-            <!-- TIPO -->
             <VerticalStackLayout Spacing="12">
 
                 <Label Text="TIPO DA FIGURINHA *"
@@ -286,7 +284,6 @@
                        HorizontalOptions="Center"/>
             </VerticalStackLayout>
 
-            <!-- STATUS DIFERENTE -->
             <VerticalStackLayout Spacing="14">
 
                 <Label Text="STATUS DA COLEÇÃO"
@@ -372,7 +369,8 @@
                 </Grid>
             </VerticalStackLayout>
 
-            <Button Text="🏆 ADICIONAR AO ÁLBUM"
+            <Button x:Name="btnSalvar"
+                    Text="🏆 ADICIONAR AO ÁLBUM"
                     FontSize="18"
                     FontAttributes="Bold"
                     BackgroundColor="#FFD700"

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AlbumCopa2026")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+60de8ff83e8e32f123c2877c423312e6f10c2db5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2936ad36e4779f4b82e07f94d5c14cf296546eb8")]
 [assembly: System.Reflection.AssemblyProductAttribute("AlbumCopa2026")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AlbumCopa2026")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

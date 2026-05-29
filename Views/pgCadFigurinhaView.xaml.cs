@@ -10,7 +10,6 @@ namespace AlbumCopa2026.Views
 
         string _imgSelecionada = "";
         string _tipoSelecionado = "";
-
         bool _obtido = false;
         bool _desejado = false;
 
@@ -18,6 +17,29 @@ namespace AlbumCopa2026.Views
         {
             InitializeComponent();
             _controller = new FigurinhaController();
+            AtualizarBotaoSalvar();
+        }
+
+        private void AtualizarBotaoSalvar()
+        {
+            bool formularioOk =
+                !string.IsNullOrWhiteSpace(txtNomeJogador.Text) &&
+                pickerSelecao.SelectedIndex != -1 &&
+                !string.IsNullOrWhiteSpace(_tipoSelecionado) &&
+                !string.IsNullOrWhiteSpace(_imgSelecionada);
+
+            btnSalvar.IsEnabled = formularioOk;
+            btnSalvar.Opacity = formularioOk ? 1 : 0.45;
+        }
+
+        private void txtNomeJogador_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            AtualizarBotaoSalvar();
+        }
+
+        private void pickerSelecao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarBotaoSalvar();
         }
 
         private void tapComum_Tapped(object sender, TappedEventArgs e)
@@ -32,6 +54,8 @@ namespace AlbumCopa2026.Views
 
             lblTipoSelecionado.Text = "Tipo selecionado: ⚪ Comum";
             lblTipoSelecionado.TextColor = Color.FromArgb("#FFFFFF");
+
+            AtualizarBotaoSalvar();
         }
 
         private void tapEspecial_Tapped(object sender, TappedEventArgs e)
@@ -46,46 +70,30 @@ namespace AlbumCopa2026.Views
 
             lblTipoSelecionado.Text = "Tipo selecionado: ⭐ Especial";
             lblTipoSelecionado.TextColor = Color.FromArgb("#FFD700");
+
+            AtualizarBotaoSalvar();
         }
 
         private void tapObtido_Tapped(object sender, TappedEventArgs e)
         {
             _obtido = !_obtido;
 
-            if (_obtido)
-            {
-                frmObtido.BackgroundColor = Color.FromArgb("#145C32");
-                frmObtido.BorderColor = Color.FromArgb("#4CAF50");
-                lblObtidoEstado.Text = "Já faz parte da coleção";
-                lblObtidoEstado.TextColor = Color.FromArgb("#FFFFFF");
-            }
-            else
-            {
-                frmObtido.BackgroundColor = Color.FromArgb("#10271F");
-                frmObtido.BorderColor = Color.FromArgb("#2E7D52");
-                lblObtidoEstado.Text = "Não adquirida";
-                lblObtidoEstado.TextColor = Color.FromArgb("#A8D8A8");
-            }
+            frmObtido.BackgroundColor = _obtido ? Color.FromArgb("#145C32") : Color.FromArgb("#10271F");
+            frmObtido.BorderColor = _obtido ? Color.FromArgb("#4CAF50") : Color.FromArgb("#2E7D52");
+
+            lblObtidoEstado.Text = _obtido ? "Já faz parte da coleção" : "Não adquirida";
+            lblObtidoEstado.TextColor = _obtido ? Colors.White : Color.FromArgb("#A8D8A8");
         }
 
         private void tapDesejado_Tapped(object sender, TappedEventArgs e)
         {
             _desejado = !_desejado;
 
-            if (_desejado)
-            {
-                frmDesejado.BackgroundColor = Color.FromArgb("#4A1324");
-                frmDesejado.BorderColor = Color.FromArgb("#E91E63");
-                lblDesejadoEstado.Text = "Na lista de desejos";
-                lblDesejadoEstado.TextColor = Color.FromArgb("#FFFFFF");
-            }
-            else
-            {
-                frmDesejado.BackgroundColor = Color.FromArgb("#10271F");
-                frmDesejado.BorderColor = Color.FromArgb("#2E7D52");
-                lblDesejadoEstado.Text = "Fora da lista";
-                lblDesejadoEstado.TextColor = Color.FromArgb("#A8D8A8");
-            }
+            frmDesejado.BackgroundColor = _desejado ? Color.FromArgb("#4A1324") : Color.FromArgb("#10271F");
+            frmDesejado.BorderColor = _desejado ? Color.FromArgb("#E91E63") : Color.FromArgb("#2E7D52");
+
+            lblDesejadoEstado.Text = _desejado ? "Na lista de desejos" : "Fora da lista";
+            lblDesejadoEstado.TextColor = _desejado ? Colors.White : Color.FromArgb("#A8D8A8");
         }
 
         private async void btnAdicionarImagem_Clicked(object sender, EventArgs e)
@@ -98,11 +106,14 @@ namespace AlbumCopa2026.Views
                 imgFigurinha.IsVisible = true;
                 btnRemoverImagem.IsVisible = true;
             }
+
+            AtualizarBotaoSalvar();
         }
 
         private void btnRemoverImagem_Clicked(object sender, EventArgs e)
         {
             RemoverImagem();
+            AtualizarBotaoSalvar();
         }
 
         void RemoverImagem()
@@ -118,20 +129,27 @@ namespace AlbumCopa2026.Views
             string nome = txtNomeJogador.Text;
             string selecao = pickerSelecao.SelectedItem?.ToString();
 
-            if (string.IsNullOrWhiteSpace(nome) ||
-                pickerSelecao.SelectedIndex == -1 ||
-                string.IsNullOrWhiteSpace(_tipoSelecionado) ||
-                string.IsNullOrWhiteSpace(_imgSelecionada))
+            if (string.IsNullOrWhiteSpace(_imgSelecionada))
             {
-                await DisplayAlert(
-                    "⚠️ Atenção",
-                    "Preencha todos os campos obrigatórios:\n\n" +
-                    "• Foto da figurinha\n" +
-                    "• Nome do jogador\n" +
-                    "• Seleção\n" +
-                    "• Tipo da figurinha",
-                    "OK");
+                await DisplayAlert("⚠️ Atenção", "Selecione uma foto da figurinha.", "OK");
+                return;
+            }
 
+            if (string.IsNullOrWhiteSpace(nome))
+            {
+                await DisplayAlert("⚠️ Atenção", "Digite o nome do jogador.", "OK");
+                return;
+            }
+
+            if (pickerSelecao.SelectedIndex == -1)
+            {
+                await DisplayAlert("⚠️ Atenção", "Escolha uma seleção.", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(_tipoSelecionado))
+            {
+                await DisplayAlert("⚠️ Atenção", "Escolha o tipo da figurinha.", "OK");
                 return;
             }
 
@@ -187,6 +205,8 @@ namespace AlbumCopa2026.Views
             frmDesejado.BorderColor = Color.FromArgb("#2E7D52");
             lblDesejadoEstado.Text = "Fora da lista";
             lblDesejadoEstado.TextColor = Color.FromArgb("#A8D8A8");
+
+            AtualizarBotaoSalvar();
         }
 
         private void btnVoltar_Clicked(object sender, EventArgs e)
