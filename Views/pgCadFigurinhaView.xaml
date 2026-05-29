@@ -3,281 +3,395 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AlbumCopa2026.Views.pgCadFigurinhaView"
              Title="Cadastrar Figurinha"
-             BackgroundColor="#0A3D2E">
+             BackgroundColor="#061B14"
+             NavigationPage.HasNavigationBar="False">
 
     <ScrollView>
-        <StackLayout Padding="20,20,20,40" Spacing="0">
+        <VerticalStackLayout Padding="24,24,24,40" Spacing="22">
 
-            <!-- Cabeçalho da tela -->
-            <StackLayout HorizontalOptions="Center" Margin="0,0,0,20">
-                <Label Text="⚽ Nova Figurinha"
-                       FontSize="24"
-                       FontAttributes="Bold"
-                       TextColor="#FFD700"
-                       HorizontalOptions="Center"/>
-                <Label Text="Copa do Mundo 2026"
-                       FontSize="13"
-                       TextColor="#A8D8A8"
-                       HorizontalOptions="Center"/>
-                <BoxView HeightRequest="2" Color="#FFD700"
-                         Margin="60,10,60,0" CornerRadius="2"/>
-            </StackLayout>
+            <Grid HeightRequest="180">
+                <Image Source="banner.png" Aspect="AspectFill"/>
+                <BoxView BackgroundColor="#88000000"/>
 
-            <!-- FOTO DA FIGURINHA -->
-            <Frame BackgroundColor="#0D2B1E"
-                   CornerRadius="16"
-                   Padding="16"
-                   BorderColor="#2E7D52"
-                   Margin="0,0,0,14">
-                <StackLayout Spacing="10">
-                    <Label Text="📸 Foto da Figurinha"
-                           FontSize="14"
+                <VerticalStackLayout VerticalOptions="Center"
+                                     HorizontalOptions="Center"
+                                     Spacing="6">
+                    <Label Text="🏆 NOVA FIGURINHA"
+                           FontSize="32"
                            FontAttributes="Bold"
-                           TextColor="#FFD700"/>
+                           TextColor="#FFD700"
+                           HorizontalTextAlignment="Center"/>
 
-                    <!-- Preview da imagem -->
-                    <Frame x:Name="frmImagem"
-                           BackgroundColor="#1A5C3E"
-                           CornerRadius="12"
-                           Padding="0"
-                           HeightRequest="160"
+                    <Label Text="Rumo ao Hexa • Copa do Mundo 2026"
+                           FontSize="14"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+
+            <!-- FOTO -->
+            <VerticalStackLayout Spacing="12">
+
+                <Label Text="FOTO DA FIGURINHA *"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"/>
+
+                <Frame BackgroundColor="#0D2B1E"
+                       BorderColor="#FFD700"
+                       CornerRadius="24"
+                       Padding="0"
+                       HorizontalOptions="Center"
+                       HeightRequest="260"
+                       WidthRequest="190"
+                       HasShadow="False">
+
+                    <Grid>
+                        <BoxView BackgroundColor="#10271F"/>
+
+                        <VerticalStackLayout VerticalOptions="Center"
+                                             HorizontalOptions="Center"
+                                             Spacing="10">
+
+                            <Label Text="📸"
+                                   FontSize="44"
+                                   HorizontalOptions="Center"/>
+
+                            <Label Text="Adicionar foto"
+                                   TextColor="#A8D8A8"
+                                   FontSize="14"
+                                   HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+
+                        <Image x:Name="imgFigurinha"
+                               Aspect="AspectFill"
+                               IsVisible="False"/>
+                    </Grid>
+                </Frame>
+
+                <HorizontalStackLayout HorizontalOptions="Center"
+                                       Spacing="12">
+
+                    <Button x:Name="btnAdicionarImagem"
+                            Text="Selecionar"
+                            BackgroundColor="#FFD700"
+                            TextColor="#061B14"
+                            CornerRadius="18"
+                            HeightRequest="44"
+                            WidthRequest="140"
+                            FontAttributes="Bold"
+                            Clicked="btnAdicionarImagem_Clicked"/>
+
+                    <Button x:Name="btnRemoverImagem"
+                            Text="Remover"
+                            BackgroundColor="#2A1515"
+                            TextColor="#FF6B6B"
+                            CornerRadius="18"
+                            HeightRequest="44"
+                            WidthRequest="120"
+                            IsVisible="False"
+                            Clicked="btnRemoverImagem_Clicked"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <!-- NOME -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="NOME DO JOGADOR *"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"/>
+
+                <Border BackgroundColor="#10271F"
+                        Stroke="#2E7D52"
+                        StrokeShape="RoundRectangle 18"
+                        Padding="18,6">
+
+                    <Entry x:Name="txtNomeJogador"
+                           Placeholder="Ex: Vinicius Jr."
+                           PlaceholderColor="#5F8F72"
+                           TextColor="White"
+                           BackgroundColor="Transparent"
+                           FontSize="16"/>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- SELEÇÃO -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="SELEÇÃO *"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"/>
+
+                <Border BackgroundColor="#10271F"
+                        Stroke="#2E7D52"
+                        StrokeShape="RoundRectangle 18"
+                        Padding="12,2">
+
+                    <Picker x:Name="pickerSelecao"
+                            Title="Escolha uma seleção"
+                            TitleColor="#5F8F72"
+                            TextColor="White"
+                            FontSize="16">
+
+                        <Picker.Items>
+                            <x:String>🇿🇦 África do Sul</x:String>
+                            <x:String>🇩🇪 Alemanha</x:String>
+                            <x:String>🇩🇿 Argélia</x:String>
+                            <x:String>🇸🇦 Arábia Saudita</x:String>
+                            <x:String>🇦🇷 Argentina</x:String>
+                            <x:String>🇦🇺 Austrália</x:String>
+                            <x:String>🇦🇹 Áustria</x:String>
+                            <x:String>🇧🇪 Bélgica</x:String>
+                            <x:String>🇧🇦 Bósnia e Herzegovina</x:String>
+                            <x:String>🇧🇷 Brasil</x:String>
+                            <x:String>🇨🇻 Cabo Verde</x:String>
+                            <x:String>🇨🇲 Camarões</x:String>
+                            <x:String>🇨🇦 Canadá</x:String>
+                            <x:String>🇶🇦 Catar</x:String>
+                            <x:String>🇨🇴 Colômbia</x:String>
+                            <x:String>🇰🇷 Coreia do Sul</x:String>
+                            <x:String>🇨🇷 Costa Rica</x:String>
+                            <x:String>🇨🇮 Costa do Marfim</x:String>
+                            <x:String>🇭🇷 Croácia</x:String>
+                            <x:String>🇨🇼 Curaçao</x:String>
+                            <x:String>🇩🇰 Dinamarca</x:String>
+                            <x:String>🇪🇬 Egito</x:String>
+                            <x:String>🏴 Escócia</x:String>
+                            <x:String>🇪🇨 Equador</x:String>
+                            <x:String>🇪🇸 Espanha</x:String>
+                            <x:String>🇺🇸 Estados Unidos</x:String>
+                            <x:String>🇫🇷 França</x:String>
+                            <x:String>🇬🇭 Gana</x:String>
+                            <x:String>🇭🇹 Haiti</x:String>
+                            <x:String>🇳🇱 Holanda</x:String>
+                            <x:String>🏴 Inglaterra</x:String>
+                            <x:String>🇮🇷 Irã</x:String>
+                            <x:String>🇮🇶 Iraque</x:String>
+                            <x:String>🇯🇵 Japão</x:String>
+                            <x:String>🇯🇴 Jordânia</x:String>
+                            <x:String>🇲🇦 Marrocos</x:String>
+                            <x:String>🇲🇽 México</x:String>
+                            <x:String>🇳🇿 Nova Zelândia</x:String>
+                            <x:String>🇳🇴 Noruega</x:String>
+                            <x:String>🇵🇦 Panamá</x:String>
+                            <x:String>🇵🇾 Paraguai</x:String>
+                            <x:String>🇵🇹 Portugal</x:String>
+                            <x:String>🇸🇳 Senegal</x:String>
+                            <x:String>🇨🇭 Suíça</x:String>
+                            <x:String>🇹🇳 Tunísia</x:String>
+                            <x:String>🇹🇷 Turquia</x:String>
+                            <x:String>🇺🇾 Uruguai</x:String>
+                            <x:String>🇺🇿 Uzbequistão</x:String>
+                        </Picker.Items>
+
+                    </Picker>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- TIPO -->
+            <VerticalStackLayout Spacing="12">
+
+                <Label Text="TIPO DA FIGURINHA *"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"/>
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+
+                    <Frame x:Name="frmComum"
+                           Grid.Column="0"
+                           BackgroundColor="#10271F"
                            BorderColor="#2E7D52"
-                           HorizontalOptions="Center"
-                           WidthRequest="160">
+                           CornerRadius="24"
+                           Padding="0"
+                           HasShadow="False"
+                           HeightRequest="150">
+
                         <Grid>
-                            <Label Text="Toque para adicionar foto"
-                                   TextColor="#6B9E7A"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   HorizontalTextAlignment="Center"
-                                   FontSize="13"/>
-                            <Image x:Name="imgFigurinha"
-                                   Aspect="AspectFill"
-                                   IsVisible="False"/>
+                            <BoxView HeightRequest="5"
+                                     VerticalOptions="Start"
+                                     BackgroundColor="#C0C0C0"/>
+
+                            <VerticalStackLayout VerticalOptions="Center"
+                                                 HorizontalOptions="Center"
+                                                 Spacing="8">
+
+                                <Label Text="⚪"
+                                       FontSize="34"
+                                       HorizontalOptions="Center"/>
+
+                                <Label Text="COMUM"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center"/>
+
+                                <Label Text="Figurinha padrão"
+                                       FontSize="11"
+                                       TextColor="#A8D8A8"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="tapComum_Tapped"/>
+                            </Grid.GestureRecognizers>
                         </Grid>
                     </Frame>
 
-                    <StackLayout Orientation="Horizontal"
-                                 HorizontalOptions="Center"
-                                 Spacing="10">
-                        <Button x:Name="btnAdicionarImagem"
-                                Text="Selecionar Imagem"
-                                BackgroundColor="#1A5C3E"
-                                TextColor="#FFD700"
-                                CornerRadius="20"
-                                FontSize="13"
-                                Padding="16,8"
-                                BorderColor="#FFD700"
-                                BorderWidth="1"
-                                Clicked="btnAdicionarImagem_Clicked"/>
-                        <Button x:Name="btnRemoverImagem"
-                                Text="Remover"
-                                BackgroundColor="#4A1010"
-                                TextColor="#FF6B6B"
-                                CornerRadius="20"
-                                FontSize="13"
-                                Padding="16,8"
-                                IsVisible="False"
-                                Clicked="btnRemoverImagem_Clicked"/>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
+                    <Frame x:Name="frmEspecial"
+                           Grid.Column="1"
+                           BackgroundColor="#10271F"
+                           BorderColor="#2E7D52"
+                           CornerRadius="24"
+                           Padding="0"
+                           HasShadow="False"
+                           HeightRequest="150">
 
-            <!-- NOME DO JOGADOR -->
-            <Frame BackgroundColor="#0D2B1E"
-                   CornerRadius="16"
-                   Padding="16"
-                   BorderColor="#2E7D52"
-                   Margin="0,0,0,14">
-                <StackLayout Spacing="8">
-                    <Label Text="👤 Nome do Jogador *"
-                           FontSize="14"
-                           FontAttributes="Bold"
-                           TextColor="#FFD700"/>
-                    <Border BackgroundColor="#1A5C3E"
-                            StrokeShape="RoundRectangle 10"
-                            Stroke="#2E7D52"
-                            Padding="12,4">
-                        <Entry x:Name="txtNomeJogador"
-                               Placeholder="Ex: Vinicius Jr."
-                               PlaceholderColor="#4A7A5A"
-                               TextColor="#FFFFFF"
-                               BackgroundColor="Transparent"
-                               FontSize="15"/>
-                    </Border>
-                </StackLayout>
-            </Frame>
+                        <Grid>
+                            <BoxView HeightRequest="5"
+                                     VerticalOptions="Start"
+                                     BackgroundColor="#FFD700"/>
 
-            <!-- SELEÇÃO -->
-            <Frame BackgroundColor="#0D2B1E"
-                   CornerRadius="16"
-                   Padding="16"
-                   BorderColor="#2E7D52"
-                   Margin="0,0,0,14">
-                <StackLayout Spacing="8">
-                    <Label Text="🌍 Seleção *"
-                           FontSize="14"
-                           FontAttributes="Bold"
-                           TextColor="#FFD700"/>
-                    <Border BackgroundColor="#1A5C3E"
-                            StrokeShape="RoundRectangle 10"
-                            Stroke="#2E7D52"
-                            Padding="12,4">
-                        <Entry x:Name="txtSelecao"
-                               Placeholder="Ex: Brasil, Argentina, Portugal..."
-                               PlaceholderColor="#4A7A5A"
-                               TextColor="#FFFFFF"
-                               BackgroundColor="Transparent"
-                               FontSize="15"/>
-                    </Border>
-                </StackLayout>
-            </Frame>
+                            <VerticalStackLayout VerticalOptions="Center"
+                                                 HorizontalOptions="Center"
+                                                 Spacing="8">
 
-            <!-- TIPO DE FIGURINHA -->
-            <Frame BackgroundColor="#0D2B1E"
-                   CornerRadius="16"
-                   Padding="16"
-                   BorderColor="#2E7D52"
-                   Margin="0,0,0,14">
-                <StackLayout Spacing="8">
-                    <Label Text="🎴 Tipo da Figurinha *"
-                           FontSize="14"
-                           FontAttributes="Bold"
-                           TextColor="#FFD700"/>
-                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
-                        <!-- Comum -->
-                        <Frame x:Name="frmComum"
-                               Grid.Column="0"
-                               BackgroundColor="#1A5C3E"
-                               CornerRadius="10"
-                               Padding="12,10"
-                               BorderColor="#2E7D52">
-                            <StackLayout HorizontalOptions="Center" Spacing="4">
-                                <Label Text="⚪"
-                                       FontSize="22"
-                                       HorizontalOptions="Center"/>
-                                <Label Text="Comum"
-                                       FontSize="14"
-                                       FontAttributes="Bold"
-                                       TextColor="#FFFFFF"
-                                       HorizontalOptions="Center"/>
-                            </StackLayout>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="tapComum_Tapped"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                        <!-- Especial -->
-                        <Frame x:Name="frmEspecial"
-                               Grid.Column="1"
-                               BackgroundColor="#1A5C3E"
-                               CornerRadius="10"
-                               Padding="12,10"
-                               BorderColor="#2E7D52">
-                            <StackLayout HorizontalOptions="Center" Spacing="4">
                                 <Label Text="⭐"
-                                       FontSize="22"
+                                       FontSize="34"
                                        HorizontalOptions="Center"/>
-                                <Label Text="Especial"
-                                       FontSize="14"
+
+                                <Label Text="ESPECIAL"
+                                       FontSize="17"
                                        FontAttributes="Bold"
-                                       TextColor="#FFFFFF"
+                                       TextColor="White"
                                        HorizontalOptions="Center"/>
-                            </StackLayout>
-                            <Frame.GestureRecognizers>
+
+                                <Label Text="Figurinha rara"
+                                       FontSize="11"
+                                       TextColor="#A8D8A8"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="tapEspecial_Tapped"/>
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                    </Grid>
-                    <Label x:Name="lblTipoSelecionado"
-                           Text="Nenhum tipo selecionado"
-                           FontSize="12"
-                           TextColor="#6B9E7A"
-                           HorizontalOptions="Center"/>
-                </StackLayout>
-            </Frame>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Frame>
+                </Grid>
 
-            <!-- STATUS: OBTIDO / DESEJADO -->
-            <Frame BackgroundColor="#0D2B1E"
-                   CornerRadius="16"
-                   Padding="16"
-                   BorderColor="#2E7D52"
-                   Margin="0,0,0,14">
-                <StackLayout Spacing="12">
-                    <Label Text="📌 Status da Figurinha *"
-                           FontSize="14"
-                           FontAttributes="Bold"
-                           TextColor="#FFD700"/>
+                <Label x:Name="lblTipoSelecionado"
+                       Text="Nenhum tipo selecionado"
+                       FontSize="12"
+                       TextColor="#7CB08A"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
 
-                    <!-- Obtido -->
-                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
-                        <Label Grid.Column="0"
-                               Text="✅"
-                               FontSize="24"
-                               VerticalOptions="Center"/>
-                        <StackLayout Grid.Column="1" VerticalOptions="Center">
-                            <Label Text="Já tenho esta figurinha"
-                                   FontSize="14"
-                                   FontAttributes="Bold"
-                                   TextColor="#FFFFFF"/>
-                            <Label Text="Marca como obtida na sua coleção"
-                                   FontSize="11"
-                                   TextColor="#A8D8A8"/>
-                        </StackLayout>
-                        <Switch x:Name="swObtido"
-                                Grid.Column="2"
-                                OnColor="#4CAF50"
-                                ThumbColor="#FFFFFF"
-                                VerticalOptions="Center"/>
-                    </Grid>
+            <!-- STATUS DIFERENTE -->
+            <VerticalStackLayout Spacing="14">
 
-                    <BoxView HeightRequest="1" Color="#2E7D52"/>
+                <Label Text="STATUS DA COLEÇÃO"
+                       FontSize="14"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"/>
 
-                    <!-- Desejado -->
-                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
-                        <Label Grid.Column="0"
-                               Text="❤️"
-                               FontSize="24"
-                               VerticalOptions="Center"/>
-                        <StackLayout Grid.Column="1" VerticalOptions="Center">
-                            <Label Text="Quero esta figurinha"
-                                   FontSize="14"
-                                   FontAttributes="Bold"
-                                   TextColor="#FFFFFF"/>
-                            <Label Text="Adiciona à sua lista de desejos"
-                                   FontSize="11"
-                                   TextColor="#A8D8A8"/>
-                        </StackLayout>
-                        <Switch x:Name="swDesejado"
-                                Grid.Column="2"
-                                OnColor="#E91E63"
-                                ThumbColor="#FFFFFF"
-                                VerticalOptions="Center"/>
-                    </Grid>
-                </StackLayout>
-            </Frame>
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
 
-            <!-- BOTÃO SALVAR -->
-            <Button Text="💾  Salvar Figurinha"
-                    FontSize="17"
+                    <Frame x:Name="frmObtido"
+                           Grid.Column="0"
+                           BackgroundColor="#10271F"
+                           BorderColor="#2E7D52"
+                           CornerRadius="24"
+                           Padding="18"
+                           HasShadow="False"
+                           HeightRequest="140">
+
+                        <Grid>
+                            <VerticalStackLayout VerticalOptions="Center"
+                                                 HorizontalOptions="Center"
+                                                 Spacing="8">
+
+                                <Label Text="✅"
+                                       FontSize="34"
+                                       HorizontalOptions="Center"/>
+
+                                <Label Text="OBTIDA"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center"/>
+
+                                <Label x:Name="lblObtidoEstado"
+                                       Text="Não adquirida"
+                                       FontSize="11"
+                                       TextColor="#A8D8A8"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="tapObtido_Tapped"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Frame>
+
+                    <Frame x:Name="frmDesejado"
+                           Grid.Column="1"
+                           BackgroundColor="#10271F"
+                           BorderColor="#2E7D52"
+                           CornerRadius="24"
+                           Padding="18"
+                           HasShadow="False"
+                           HeightRequest="140">
+
+                        <Grid>
+                            <VerticalStackLayout VerticalOptions="Center"
+                                                 HorizontalOptions="Center"
+                                                 Spacing="8">
+
+                                <Label Text="❤️"
+                                       FontSize="34"
+                                       HorizontalOptions="Center"/>
+
+                                <Label Text="DESEJO"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       HorizontalOptions="Center"/>
+
+                                <Label x:Name="lblDesejadoEstado"
+                                       Text="Fora da lista"
+                                       FontSize="11"
+                                       TextColor="#A8D8A8"
+                                       HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="tapDesejado_Tapped"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </VerticalStackLayout>
+
+            <Button Text="🏆 ADICIONAR AO ÁLBUM"
+                    FontSize="18"
                     FontAttributes="Bold"
                     BackgroundColor="#FFD700"
-                    TextColor="#0A3D2E"
-                    CornerRadius="14"
-                    HeightRequest="54"
-                    Margin="0,8,0,0"
+                    TextColor="#061B14"
+                    HeightRequest="60"
+                    CornerRadius="24"
+                    Margin="0,10,0,0"
                     Clicked="btnSalvar_Clicked"/>
 
-            <!-- BOTÃO VOLTAR -->
             <Button Text="Voltar"
                     FontSize="15"
                     BackgroundColor="Transparent"
                     TextColor="#A8D8A8"
-                    CornerRadius="14"
-                    HeightRequest="44"
-                    Margin="0,8,0,0"
                     BorderColor="#2E7D52"
                     BorderWidth="1"
+                    CornerRadius="20"
+                    HeightRequest="48"
                     Clicked="btnVoltar_Clicked"/>
-        </StackLayout>
+
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
