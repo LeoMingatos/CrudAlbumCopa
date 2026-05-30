@@ -4,60 +4,57 @@ build_property.EnableSingleFileAnalyzer = true
 build_property.EnableTrimAnalyzer = false
 build_property.IncludeAllContentForSelfExtract = 
 build_property.TargetFramework = net9.0-android
-build_property.TargetFrameworkIdentifier = .NETCoreApp
-build_property.TargetFrameworkVersion = v9.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = false
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
-build_property.EntryPointFilePath = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AlbumCopa2026
-build_property.ProjectDir = C:\Users\minga\OneDrive\Documentos\CrudAlbumCopa\
+build_property.ProjectDir = C:\Users\minga\OneDrive\Documentos\GitHub\CrudAlbumCopa\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/minga/OneDrive/Documentos/CrudAlbumCopa/App.xaml]
+[C:/Users/minga/OneDrive/Documentos/GitHub/CrudAlbumCopa/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AlbumCopa2026.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[C:/Users/minga/OneDrive/Documentos/CrudAlbumCopa/AppShell.xaml]
+[C:/Users/minga/OneDrive/Documentos/GitHub/CrudAlbumCopa/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AlbumCopa2026.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/Users/minga/OneDrive/Documentos/CrudAlbumCopa/MainPage.xaml]
+[C:/Users/minga/OneDrive/Documentos/GitHub/CrudAlbumCopa/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AlbumCopa2026.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
-[C:/Users/minga/OneDrive/Documentos/CrudAlbumCopa/Resources/Styles/Colors.xaml]
+[C:/Users/minga/OneDrive/Documentos/GitHub/CrudAlbumCopa/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AlbumCopa2026.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[C:/Users/minga/OneDrive/Documentos/CrudAlbumCopa/Resources/Styles/Styles.xaml]
+[C:/Users/minga/OneDrive/Documentos/GitHub/CrudAlbumCopa/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AlbumCopa2026.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
-[C:/Users/minga/OneDrive/Documentos/CrudAlbumCopa/Views/pgCadFigurinhaView.xaml]
+[C:/Users/minga/OneDrive/Documentos/GitHub/CrudAlbumCopa/Views/pgCadFigurinhaView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AlbumCopa2026.Views.pgCadFigurinhaView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\pgCadFigurinhaView.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\pgCadFigurinhaView.xaml
 
-[C:/Users/minga/OneDrive/Documentos/CrudAlbumCopa/Views/pgListaFigurinhasView.xaml]
+[C:/Users/minga/OneDrive/Documentos/GitHub/CrudAlbumCopa/Views/pgListaFigurinhasView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = AlbumCopa2026.Views.pgListaFigurinhasView.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\pgListaFigurinhasView.xaml
